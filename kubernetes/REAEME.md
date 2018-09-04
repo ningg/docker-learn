@@ -34,6 +34,45 @@ kubectl get pods
 kubectl get events
 ```
 
+删除 Deployment：
+
+```
+kubectl delete deployment hello-node
+```
+
+
 ## 标准实例
+
+创建 Deployment 资源定义的文件：
+
+```
+cd deployment
+
+vim nginx-deployment.yml
+```
+
+启动 Deployment：
+
+```
+kubectl create -f nginx-deployment.yml
+```
+
+查看细节：
+
+```
+# 查看 Deployment
+# 刚执行时，显示的AVAILABLE数量时0
+kubectl get deployments
+
+# 滚动升级
+kubectl set image deployment/nginx-deployment nginx=nginx:1.12.2
+
+# 查看 Replica Set（RS）
+# 每次升级 Deployment，都会生成一个新的 RS
+kubectl get rs
+```
+
+
+
 
 
